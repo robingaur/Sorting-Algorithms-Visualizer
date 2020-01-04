@@ -223,7 +223,16 @@ public class MainCanvas extends JPanel {
         }
 
         private void heapSortMenuItem() {
-            isSorted = true;
+            if (MainCanvas.this.isSorted) {
+                JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Rectangle rectangle = new Rectangle(MainCanvas.this.getGraphics(), MainCanvas.super.getWidth(),
+                    MainCanvas.super.getHeight(), MainCanvas.this.DATA_SIZE);
+            new HeapSort(MainCanvas.this.list).sort(rectangle);
+            MainCanvas.this.isSorted = true;
         }
 
         private void helpMenuItem() {
