@@ -2,6 +2,7 @@ package GUI;
 
 import UtilityClasses.Rectangle;
 import algorithms.BubbleSort;
+import algorithms.InsertionSort;
 import algorithms.SelectionSort;
 
 import javax.swing.*;
@@ -12,7 +13,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class MainCanvas extends JPanel {
 
@@ -173,16 +173,16 @@ public class MainCanvas extends JPanel {
         }
 
         private void insertionSortMenuItem() {
-            new Rectangle(getGraphics(), getWidth(), getHeight(), DATA_SIZE).drawAtIndex(50, 50, Color.BLUE);
-            list.set(50, 50);
-            getGraphics().fillRect(200, 200, 50, 50);
-            try {
-                TimeUnit.MILLISECONDS.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if (MainCanvas.this.isSorted) {
+                JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
             }
 
-            isSorted = true;
+            Rectangle rectangle = new Rectangle(MainCanvas.this.getGraphics(), MainCanvas.super.getWidth(),
+                    MainCanvas.super.getHeight(), MainCanvas.this.DATA_SIZE);
+            new InsertionSort(MainCanvas.this.list).sort(rectangle);
+            MainCanvas.this.isSorted = true;
         }
 
         private void selectionSortMenuItem() {
