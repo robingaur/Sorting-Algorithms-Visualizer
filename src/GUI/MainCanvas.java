@@ -159,7 +159,7 @@ public class MainCanvas extends JPanel {
 
         private void bubbleSortMenuItem() {
             if (MainCanvas.this.isSorted) {
-                JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
+                JOptionPane.showMessageDialog(frame, "Already Sorted", "Error!",
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -172,7 +172,7 @@ public class MainCanvas extends JPanel {
 
         private void insertionSortMenuItem() {
             if (MainCanvas.this.isSorted) {
-                JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
+                JOptionPane.showMessageDialog(frame, "Already Sorted", "Error!",
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -185,7 +185,7 @@ public class MainCanvas extends JPanel {
 
         private void selectionSortMenuItem() {
             if (MainCanvas.this.isSorted) {
-                JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
+                JOptionPane.showMessageDialog(frame, "Already Sorted", "Error!",
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -198,7 +198,7 @@ public class MainCanvas extends JPanel {
 
         private void quickSortMenuItem() {
             if (MainCanvas.this.isSorted) {
-                JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
+                JOptionPane.showMessageDialog(frame, "Already Sorted", "Error!",
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -211,7 +211,7 @@ public class MainCanvas extends JPanel {
 
         private void mergeSortMenuItem() {
             if (MainCanvas.this.isSorted) {
-                JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
+                JOptionPane.showMessageDialog(frame, "Already Sorted", "Error!",
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -224,7 +224,7 @@ public class MainCanvas extends JPanel {
 
         private void heapSortMenuItem() {
             if (MainCanvas.this.isSorted) {
-                JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
+                JOptionPane.showMessageDialog(frame, "Already Sorted", "Error!",
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
