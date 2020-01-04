@@ -3,6 +3,7 @@ package GUI;
 import UtilityClasses.Rectangle;
 import algorithms.BubbleSort;
 import algorithms.InsertionSort;
+import algorithms.QuickSort;
 import algorithms.SelectionSort;
 
 import javax.swing.*;
@@ -199,7 +200,16 @@ public class MainCanvas extends JPanel {
         }
 
         private void quickSortMenuItem() {
-            isSorted = true;
+            if (MainCanvas.this.isSorted) {
+                JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Rectangle rectangle = new Rectangle(MainCanvas.this.getGraphics(), MainCanvas.super.getWidth(),
+                    MainCanvas.super.getHeight(), MainCanvas.this.DATA_SIZE);
+            new QuickSort(MainCanvas.this.list).sort(rectangle);
+            MainCanvas.this.isSorted = true;
         }
 
         private void mergeSortMenuItem() {
