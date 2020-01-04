@@ -2,6 +2,7 @@ package GUI;
 
 import UtilityClasses.Rectangle;
 import algorithms.BubbleSort;
+import algorithms.SelectionSort;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainCanvas extends JPanel {
 
@@ -18,7 +20,6 @@ public class MainCanvas extends JPanel {
     private final int DATA_SIZE;
     private List<Number> list;
     private boolean isSorted;
-    private Rectangle rectangle;
 
     public MainCanvas() {
         try {
@@ -35,13 +36,13 @@ public class MainCanvas extends JPanel {
 
         Collections.shuffle(list);
         this.isSorted = false;
-        this.rectangle = new Rectangle(super.getGraphics(), super.getWidth(), super.getHeight(),
-                this.DATA_SIZE);
+
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Rectangle rectangle = new Rectangle(g, super.getWidth(), super.getHeight(), this.DATA_SIZE);
 
         // White Background
         g.setColor(Color.WHITE);
@@ -51,7 +52,7 @@ public class MainCanvas extends JPanel {
         g.drawRect(0, 0, super.getWidth(), super.getHeight());
 
         for (int i = 0; i < this.list.size(); i++) {
-            this.rectangle.drawAtIndex(i, this.list.get(i).intValue(), Color.GREEN);
+            rectangle.drawAtIndex(i, this.list.get(i).intValue(), Color.GREEN);
         }
     }
 
@@ -162,19 +163,39 @@ public class MainCanvas extends JPanel {
             if (MainCanvas.this.isSorted) {
                 JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
                         JOptionPane.ERROR_MESSAGE);
+                return;
             }
 
-
-            new BubbleSort(MainCanvas.this.list).sort(MainCanvas.this.rectangle);
+            Rectangle rectangle = new Rectangle(MainCanvas.this.getGraphics(), MainCanvas.super.getWidth(),
+                    MainCanvas.super.getHeight(), MainCanvas.this.DATA_SIZE);
+            new BubbleSort(MainCanvas.this.list).sort(rectangle);
             MainCanvas.this.isSorted = true;
         }
 
         private void insertionSortMenuItem() {
+            new Rectangle(getGraphics(), getWidth(), getHeight(), DATA_SIZE).drawAtIndex(50, 50, Color.BLUE);
+            list.set(50, 50);
+            getGraphics().fillRect(200, 200, 50, 50);
+            try {
+                TimeUnit.MILLISECONDS.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             isSorted = true;
         }
 
         private void selectionSortMenuItem() {
-            isSorted = true;
+            if (MainCanvas.this.isSorted) {
+                JOptionPane.showMessageDialog(MainCanvas.this.frame, "Already Sorted", "Error!",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Rectangle rectangle = new Rectangle(MainCanvas.this.getGraphics(), MainCanvas.super.getWidth(),
+                    MainCanvas.super.getHeight(), MainCanvas.this.DATA_SIZE);
+            new SelectionSort(MainCanvas.this.list).sort(rectangle);
+            MainCanvas.this.isSorted = true;
         }
 
         private void quickSortMenuItem() {

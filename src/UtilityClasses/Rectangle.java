@@ -17,7 +17,6 @@ public class Rectangle {
     }
 
     public void drawAtIndex(int index, int height, Color color) {
-
         int rectangleWidth = this.canvasWidth / (this.dataLength + 2);
         int x = rectangleWidth * (index + 1);
         int y = this.canvasHeight / (this.dataLength + 2) * (this.dataLength - height) + 50;
@@ -27,7 +26,7 @@ public class Rectangle {
         this.g.fillRect(x, y, rectangleWidth, rectangleHeight);
 
         g.setColor(Color.BLACK);
-        g.drawRect(x, y + 50, rectangleWidth, rectangleHeight);
+        g.drawRect(x, y, rectangleWidth, rectangleHeight);
     }
 
     public void removeAtIndex(int index, int height) {
@@ -41,6 +40,6 @@ public class Rectangle {
         this.g.fillRect(x, y, rectangleWidth, rectangleHeight);
 
         g.setColor(Color.WHITE);
-        g.drawRect(x, y + 50, rectangleWidth, rectangleHeight);
+        g.drawRect(x, y, rectangleWidth, rectangleHeight);
     }
 }
