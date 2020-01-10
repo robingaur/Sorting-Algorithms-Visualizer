@@ -11,7 +11,7 @@ public class HeapSort extends AbstractAlgorithms {
     }
 
     @Override
-    public void sort() {
+    void sort() {
 
         int n = this.list.size();
 
@@ -19,7 +19,7 @@ public class HeapSort extends AbstractAlgorithms {
             this.heapify(n, i);
 
         for (int i = n - 1; i >= 0; i--) {
-            super.swap(0, i);
+            super.swapWithAnimation(0, i);
             this.heapify(i, 0);
         }
     }
@@ -40,7 +40,7 @@ public class HeapSort extends AbstractAlgorithms {
         }
 
         if (largest != i) {
-            super.swap(i, largest);
+            super.swapWithAnimation(i, largest);
             this.heapify(n, largest);
         }
     }

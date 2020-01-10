@@ -15,7 +15,7 @@ public class BubbleSort extends AbstractAlgorithms {
         for (int i = 0; i < super.list.size(); i++) {
             for (int j = 0; j < super.list.size() - i - 1; j++) {
                 if (super.list.get(j).intValue() > super.list.get(j + 1).intValue()) {
-                    super.swap(j, j + 1);
+                    super.swapWithAnimation(j, j + 1);
                 }
             }
         }

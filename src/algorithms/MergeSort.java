@@ -2,35 +2,31 @@ package algorithms;
 
 import UtilityClasses.Rectangle;
 
-import java.awt.*;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-public class MergeSort {
+public class MergeSort extends AbstractAlgorithms {
 
-    private List<Number> list;
-
-    public MergeSort(List<Number> list) {
-        this.list = list;
+    public MergeSort(List<Number> list, Rectangle rectangle) {
+        super(list, rectangle);
     }
 
-    public void sort(Rectangle rectangle) {
-        this.sort(rectangle, 0, this.list.size() - 1);
+    @Override
+    void sort() {
+        this.sort(0, this.list.size() - 1);
     }
 
-    private void sort(Rectangle rectangle, int start, int end) {
+    private void sort(int start, int end) {
         if (start < end) {
             int mid = (start + end) / 2;
 
-            sort(rectangle, start, mid);
-            sort(rectangle, mid + 1, end);
+            this.sort(start, mid);
+            this.sort(mid + 1, end);
 
-            this.merge(rectangle, start, mid, end);
+            this.merge(start, mid, end);
         }
     }
 
-    private void merge(Rectangle rectangle, int start, int mid, int end) {
-
+    private void merge(int start, int mid, int end) {
         try {
             // Sizes of the Array
             int sizeOfLeftArray = mid - start + 1;
@@ -40,51 +36,45 @@ public class MergeSort {
             int[] right = new int[sizeOfRightArray];
 
             for (int i = 0; i < sizeOfLeftArray; i++) {
-                left[i] = this.list.get(start + i).intValue();
+                left[i] = super.list.get(start + i).intValue();
             }
 
             for (int i = 0; i < sizeOfRightArray; i++) {
-                right[i] = this.list.get(mid + i + 1).intValue();
+                right[i] = super.list.get(mid + i + 1).intValue();
             }
 
             int i = 0, j = 0, k = start;
             while (i < sizeOfLeftArray && j < sizeOfRightArray) {
-                rectangle.drawAtIndex(k, this.list.get(k).intValue(), Color.RED);
-                TimeUnit.MILLISECONDS.sleep(50);
-                rectangle.removeAtIndex(k, this.list.get(k).intValue());
+                super.drawAndDeleteRedRectangle(k, k);
 
                 if (left[i] <= right[j]) {
-                    this.list.set(k, left[i]);
+                    super.list.set(k, left[i]);
                     i++;
                 } else {
-                    this.list.set(k, right[j]);
+                    super.list.set(k, right[j]);
                     j++;
                 }
-                rectangle.drawAtIndex(k, this.list.get(k).intValue(), Color.GREEN);
+
+                super.drawGreenRectangle(k, k);
+                Thread.sleep(10);
                 k++;
             }
 
             while (i < sizeOfLeftArray) {
-                rectangle.drawAtIndex(k, this.list.get(k).intValue(), Color.RED);
-                TimeUnit.MILLISECONDS.sleep(50);
-
-                rectangle.removeAtIndex(k, this.list.get(k).intValue());
+                super.drawAndDeleteRedRectangle(k, k);
                 this.list.set(k, left[i]);
                 i++;
 
-                rectangle.drawAtIndex(k, this.list.get(k).intValue(), Color.GREEN);
+                super.drawGreenRectangle(k, k);
                 k++;
             }
 
             while (j < sizeOfRightArray) {
-                rectangle.drawAtIndex(k, this.list.get(k).intValue(), Color.RED);
-                TimeUnit.MILLISECONDS.sleep(50);
-
-                rectangle.removeAtIndex(k, this.list.get(k).intValue());
+                super.drawAndDeleteRedRectangle(k, k);
                 this.list.set(k, right[j]);
                 j++;
 
-                rectangle.drawAtIndex(k, this.list.get(k).intValue(), Color.GREEN);
+                super.drawGreenRectangle(k, k);
                 k++;
             }
         } catch (InterruptedException ex) {
