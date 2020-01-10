@@ -16,7 +16,7 @@ import java.util.List;
 
 public class MainCanvas extends JPanel {
 
-    private static JFrame frame;
+    private JFrame frame;
     private final int DATA_SIZE;
     private List<Number> list;
     private boolean isSorted;
