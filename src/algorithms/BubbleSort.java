@@ -4,7 +4,7 @@ import UtilityClasses.Rectangle;
 
 import java.util.List;
 
-public class BubbleSort extends AbstractAlgorithms implements Runnable {
+public class BubbleSort extends AbstractAlgorithms {
 
     public BubbleSort(List<Number> list, Rectangle rectangle) {
         super(list, rectangle);
