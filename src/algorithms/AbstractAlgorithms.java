@@ -62,9 +62,6 @@ public abstract class AbstractAlgorithms implements Runnable, AlgorithmsInterfac
         }
     }
 
-    protected void currentlySelected() {
-    }
-
     @Override
     public void setAnimationDelay(int delay) {
         this.animationDelay = delay;

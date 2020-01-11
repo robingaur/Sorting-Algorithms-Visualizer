@@ -6,10 +6,7 @@ import UtilityClasses.Rectangle;
 import algorithms.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.Collections;
 
 class MenuItemListener implements ActionListener, KeyListener {
@@ -30,7 +27,6 @@ class MenuItemListener implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
-
         try {
             switch (action) {
                 case ConstKeys.SHUFFLE_DATA_MENU_ITEM:
@@ -66,6 +62,22 @@ class MenuItemListener implements ActionListener, KeyListener {
                     this.sortingCheck();
                     this.heapSortMenuItem();
                     break;
+                case ConstKeys.VERY_SLOW_SPEED_MENU_ITEM:
+                    this.verySlowSpeedMenuItem();
+                    break;
+                case ConstKeys.SLOW_SPEED_MENU_ITEM:
+                    this.slowSpeedMenuItem();
+                    break;
+                case ConstKeys.NORMAL_SPEED_MENU_ITEM:
+                    this.normalSpeedMenuItem();
+                    break;
+                case ConstKeys.FAST_SPEED_MENU_ITEM:
+                    this.fastSpeedMenuItem();
+                    break;
+                case ConstKeys.VERY_FAST_SPEED_MENU_ITEM:
+                    this.veryFastSpeedMenuItem();
+                    break;
+
                 case ConstKeys.HELP_MENU_ITEM:
                     this.helpMenuItem();
                     break;
@@ -192,6 +204,25 @@ class MenuItemListener implements ActionListener, KeyListener {
         Thread thread = new Thread(abstractAlgorithms, ConstKeys.SORTING_THREAD);
         this.canvas.setListSorted(true);
         thread.start();
+    }
+
+    private void verySlowSpeedMenuItem() {
+    }
+
+    private void slowSpeedMenuItem() {
+        this.abstractAlgorithms.setAnimationDelay(50);
+    }
+
+    private void normalSpeedMenuItem() {
+        this.abstractAlgorithms.setAnimationDelay(20);
+    }
+
+    private void fastSpeedMenuItem() {
+        this.abstractAlgorithms.setAnimationDelay(7);
+    }
+
+    private void veryFastSpeedMenuItem() {
+        this.abstractAlgorithms.setAnimationDelay(3);
     }
 
     private void helpMenuItem() {
