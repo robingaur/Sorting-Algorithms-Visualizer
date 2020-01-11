@@ -160,7 +160,7 @@ class MenuItemListener implements ActionListener, KeyListener {
 
     private void mergeSortMenuItem() {
         this.initializeRectangle();
-        this.abstractAlgorithms = new QuickSort(this.canvas.getList(), this.rectangle);
+        this.abstractAlgorithms = new MergeSort(this.canvas.getList(), this.rectangle);
         Thread thread = new Thread(abstractAlgorithms, ConstKeys.SORTING_THREAD);
         this.canvas.setListSorted(true);
         thread.start();
