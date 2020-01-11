@@ -2,7 +2,7 @@ package UtilityClasses;
 
 import java.awt.*;
 
-public class Rectangle {
+public class Rectangle implements RectangleInterface {
 
     Graphics g;
     int canvasWidth;
@@ -16,6 +16,7 @@ public class Rectangle {
         this.dataLength = dataLength;
     }
 
+    @Override
     public void drawAtIndex(int index, int height, Color color) {
         int rectangleWidth = this.canvasWidth / (this.dataLength + 2);
         int x = rectangleWidth * (index + 1);
@@ -29,6 +30,7 @@ public class Rectangle {
         g.drawRect(x, y, rectangleWidth, rectangleHeight);
     }
 
+    @Override
     public void removeAtIndex(int index, int height) {
 
         int rectangleWidth = this.canvasWidth / (this.dataLength + 2);
