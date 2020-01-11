@@ -5,7 +5,7 @@ import UtilityClasses.Rectangle;
 import java.awt.*;
 import java.util.List;
 
-abstract class AbstractAlgorithms implements Runnable, AlgorithmsInterface {
+public abstract class AbstractAlgorithms implements Runnable, AlgorithmsInterface {
 
     protected List<Number> list;
     private Rectangle rectangle;
