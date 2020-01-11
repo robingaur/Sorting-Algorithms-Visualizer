@@ -39,6 +39,9 @@ class MenuItemListener implements ActionListener, KeyListener {
                 case ConstKeys.START_PAUSE_MENU_ITEM:
                     this.startPauseMenuItem();
                     break;
+                case ConstKeys.FINISH_EXECUTION_MENU_ITEM:
+                    this.finishExecutionMenuItem();
+                    break;
                 case ConstKeys.BUBBLE_SORT_MENU_ITEM:
                     this.sortingCheck();
                     this.bubbleSortMenuItem();
@@ -89,9 +92,14 @@ class MenuItemListener implements ActionListener, KeyListener {
             case KeyEvent.VK_SPACE:
                 this.startPauseMenuItem();
                 break;
+            case KeyEvent.VK_S:
+                this.shuffleDataMenuItem();
+                break;
+            case KeyEvent.VK_F:
+                this.finishExecutionMenuItem();
+                break;
         }
     }
-
 
     private void shuffleDataMenuItem() {
         for (Thread thread : Thread.getAllStackTraces().keySet()) {
@@ -108,6 +116,18 @@ class MenuItemListener implements ActionListener, KeyListener {
     }
 
     private void startPauseMenuItem() {
+    }
+
+    private void finishExecutionMenuItem() {
+        for (Thread thread : Thread.getAllStackTraces().keySet()) {
+            if (thread.getName().equals(ConstKeys.SORTING_THREAD) && thread.isAlive()) {
+                this.abstractAlgorithms.setAnimationDelay(0);
+                return;
+            }
+        }
+
+        JOptionPane.showMessageDialog(this.canvas.getFrame(), "No Sorting Algorithm is running.", "Error!",
+                JOptionPane.ERROR_MESSAGE);
     }
 
     private void sortingCheck() throws MenuItemCustomException {

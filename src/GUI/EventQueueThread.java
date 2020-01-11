@@ -2,7 +2,6 @@ package GUI;
 
 import UtilityClasses.ConstKeys;
 
-import javax.management.remote.JMXConnectorFactory;
 import javax.swing.*;
 import java.awt.*;
 
@@ -28,6 +27,7 @@ class EventQueueThread implements Runnable {
             this.frame.setBackground(Color.WHITE);
             this.frame.add(this.mainCanvas);
             this.frame.setJMenuBar(this.setMenuBar());
+            this.mainCanvas.addKeyListener(this.menuItemListener);
 
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             this.frame.setSize(screenSize);
@@ -53,6 +53,11 @@ class EventQueueThread implements Runnable {
         start_pause.setActionCommand(ConstKeys.START_PAUSE_MENU_ITEM);
         start_pause.addActionListener(this.menuItemListener);
         menuMenu.add(start_pause);
+
+        JMenuItem finishExecution = new JMenuItem("Finish Execution");
+        finishExecution.setActionCommand(ConstKeys.FINISH_EXECUTION_MENU_ITEM);
+        finishExecution.addActionListener(this.menuItemListener);
+        menuMenu.add(finishExecution);
 
         menuBar.add(menuMenu);
 

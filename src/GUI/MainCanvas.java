@@ -23,8 +23,7 @@ public class MainCanvas extends JPanel implements MainCanvasInterface {
             ex.printStackTrace();
         }
 
-//        this.addKeyListener(this.menuItemListener);
-//        this.setFocusable(true);
+        this.setFocusable(true);
 
         this.DATA_SIZE = 100;
         this.list = new ArrayList<>(this.DATA_SIZE);

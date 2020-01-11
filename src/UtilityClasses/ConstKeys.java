@@ -7,6 +7,7 @@ public class ConstKeys {
 
     public static final String SHUFFLE_DATA_MENU_ITEM = "SHUFFLE_DATA_MENU_ITEM";
     public static final String START_PAUSE_MENU_ITEM = "START_PAUSE_MENU_ITEM";
+    public static final String FINISH_EXECUTION_MENU_ITEM = "FINISH_EXECUTION_MENU_ITEM";
     public static final String BUBBLE_SORT_MENU_ITEM = "BUBBLE_SORT_MENU_ITEM";
     public static final String INSERTION_SORT_MENU_ITEM = "INSERTION_SORT_MENU_ITEM";
     public static final String SELECTION_SORT_MENU_ITEM = "SELECTION_SORT_MENU_ITEM";

@@ -9,12 +9,12 @@ public abstract class AbstractAlgorithms implements Runnable, AlgorithmsInterfac
 
     protected List<Number> list;
     private Rectangle rectangle;
-    private int animationSpeed;
+    private int animationDelay;
 
     public AbstractAlgorithms(List<Number> list, Rectangle rectangle) {
         this.list = list;
         this.rectangle = rectangle;
-        this.animationSpeed = 10;
+        this.animationDelay = 10;
     }
 
     @Override
@@ -42,7 +42,7 @@ public abstract class AbstractAlgorithms implements Runnable, AlgorithmsInterfac
             // Red Rectangle
             this.rectangle.drawAtIndex(i, this.list.get(i).intValue(), Color.RED);
             this.rectangle.drawAtIndex(j, this.list.get(j).intValue(), Color.RED);
-            Thread.sleep(5 * this.getAnimationSpeed());
+            Thread.sleep(5 * this.getAnimationDelay());
 
             // Delete Red Rectangle (Delete Rectangle at all)
             this.rectangle.removeAtIndex(i, this.list.get(i).intValue());
@@ -56,7 +56,7 @@ public abstract class AbstractAlgorithms implements Runnable, AlgorithmsInterfac
         try {
             this.rectangle.drawAtIndex(i, this.list.get(i).intValue(), Color.GREEN);
             this.rectangle.drawAtIndex(j, this.list.get(j).intValue(), Color.GREEN);
-            Thread.sleep(this.getAnimationSpeed());
+            Thread.sleep(this.getAnimationDelay());
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
@@ -66,12 +66,12 @@ public abstract class AbstractAlgorithms implements Runnable, AlgorithmsInterfac
     }
 
     @Override
-    public void setAnimationSpeed(int speed) {
-        this.animationSpeed = speed;
+    public void setAnimationDelay(int delay) {
+        this.animationDelay = delay;
     }
 
     @Override
-    public int getAnimationSpeed() {
-        return this.animationSpeed;
+    public int getAnimationDelay() {
+        return this.animationDelay;
     }
 }
