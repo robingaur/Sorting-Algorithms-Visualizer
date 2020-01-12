@@ -2,9 +2,9 @@ package algorithms;
 
 public interface AlgorithmsInterface {
 
-    void setAnimationDelay(int delay);
+    void setAnimationDelay(double delay);
 
-    int getAnimationDelay();
+    double getAnimationDelay();
 //    public void sleep();
 //    public boolean isSleep();
 //    public void awake();

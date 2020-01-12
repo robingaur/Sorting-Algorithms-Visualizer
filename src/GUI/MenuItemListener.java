@@ -6,17 +6,24 @@ import UtilityClasses.Rectangle;
 import algorithms.*;
 
 import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Collections;
 
-class MenuItemListener implements ActionListener, KeyListener {
+class MenuItemListener implements ActionListener, KeyListener, ChangeListener {
 
     private MainCanvas canvas;
     private AbstractAlgorithms abstractAlgorithms;
     private Rectangle rectangle;
+    private double animationDelay;
 
     public MenuItemListener(MainCanvas canvas) {
         this.canvas = canvas;
+        this.animationDelay = 10;
     }
 
     private void initializeRectangle() {
@@ -62,22 +69,6 @@ class MenuItemListener implements ActionListener, KeyListener {
                     this.sortingCheck();
                     this.heapSortMenuItem();
                     break;
-                case ConstKeys.VERY_SLOW_SPEED_MENU_ITEM:
-                    this.verySlowSpeedMenuItem();
-                    break;
-                case ConstKeys.SLOW_SPEED_MENU_ITEM:
-                    this.slowSpeedMenuItem();
-                    break;
-                case ConstKeys.NORMAL_SPEED_MENU_ITEM:
-                    this.normalSpeedMenuItem();
-                    break;
-                case ConstKeys.FAST_SPEED_MENU_ITEM:
-                    this.fastSpeedMenuItem();
-                    break;
-                case ConstKeys.VERY_FAST_SPEED_MENU_ITEM:
-                    this.veryFastSpeedMenuItem();
-                    break;
-
                 case ConstKeys.HELP_MENU_ITEM:
                     this.helpMenuItem();
                     break;
@@ -113,6 +104,23 @@ class MenuItemListener implements ActionListener, KeyListener {
         }
     }
 
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        JSlider slider = (JSlider) e.getSource();
+        if (slider.getValueIsAdjusting()) {
+            int sliderValue = slider.getValue();
+            if (sliderValue >= 50) {
+                this.animationDelay = 20 - 0.2 * sliderValue;
+            } else {
+                this.animationDelay = 60 - sliderValue;
+            }
+
+            if (this.abstractAlgorithms != null && this.abstractAlgorithms.getAnimationDelay() != Double.MAX_VALUE) {
+                this.abstractAlgorithms.setAnimationDelay(this.animationDelay);
+            }
+        }
+    }
+
     private void shuffleDataMenuItem() {
         for (Thread thread : Thread.getAllStackTraces().keySet()) {
             if (thread.getName().equals(ConstKeys.SORTING_THREAD) && thread.isAlive()) {
@@ -128,6 +136,18 @@ class MenuItemListener implements ActionListener, KeyListener {
     }
 
     private void startPauseMenuItem() {
+
+        for (Thread thread : Thread.getAllStackTraces().keySet()) {
+            if (thread.getName().equals(ConstKeys.SORTING_THREAD) && thread.isAlive()) {
+                if (this.abstractAlgorithms.getAnimationDelay() == Double.MAX_VALUE) {
+                    this.abstractAlgorithms.setAnimationDelay(this.animationDelay);
+                    thread.interrupt();
+                } else {
+                    this.abstractAlgorithms.setAnimationDelay(Double.MAX_VALUE);
+                }
+            }
+        }
+
     }
 
     private void finishExecutionMenuItem() {
@@ -161,6 +181,7 @@ class MenuItemListener implements ActionListener, KeyListener {
     private void bubbleSortMenuItem() {
         this.initializeRectangle();
         this.abstractAlgorithms = new BubbleSort(this.canvas.getList(), this.rectangle);
+        this.abstractAlgorithms.setAnimationDelay(this.animationDelay);
         Thread thread = new Thread(abstractAlgorithms, ConstKeys.SORTING_THREAD);
         this.canvas.setListSorted(true);
         thread.start();
@@ -169,6 +190,7 @@ class MenuItemListener implements ActionListener, KeyListener {
     private void insertionSortMenuItem() {
         this.initializeRectangle();
         this.abstractAlgorithms = new InsertionSort(this.canvas.getList(), this.rectangle);
+        this.abstractAlgorithms.setAnimationDelay(this.animationDelay);
         Thread thread = new Thread(abstractAlgorithms, ConstKeys.SORTING_THREAD);
         this.canvas.setListSorted(true);
         thread.start();
@@ -177,6 +199,7 @@ class MenuItemListener implements ActionListener, KeyListener {
     private void selectionSortMenuItem() {
         this.initializeRectangle();
         this.abstractAlgorithms = new SelectionSort(this.canvas.getList(), this.rectangle);
+        this.abstractAlgorithms.setAnimationDelay(this.animationDelay);
         Thread thread = new Thread(abstractAlgorithms, ConstKeys.SORTING_THREAD);
         this.canvas.setListSorted(true);
         thread.start();
@@ -185,6 +208,7 @@ class MenuItemListener implements ActionListener, KeyListener {
     private void quickSortMenuItem() {
         this.initializeRectangle();
         this.abstractAlgorithms = new QuickSort(this.canvas.getList(), this.rectangle);
+        this.abstractAlgorithms.setAnimationDelay(this.animationDelay);
         Thread thread = new Thread(abstractAlgorithms, ConstKeys.SORTING_THREAD);
         this.canvas.setListSorted(true);
         thread.start();
@@ -193,6 +217,7 @@ class MenuItemListener implements ActionListener, KeyListener {
     private void mergeSortMenuItem() {
         this.initializeRectangle();
         this.abstractAlgorithms = new MergeSort(this.canvas.getList(), this.rectangle);
+        this.abstractAlgorithms.setAnimationDelay(this.animationDelay);
         Thread thread = new Thread(abstractAlgorithms, ConstKeys.SORTING_THREAD);
         this.canvas.setListSorted(true);
         thread.start();
@@ -201,28 +226,10 @@ class MenuItemListener implements ActionListener, KeyListener {
     private void heapSortMenuItem() {
         this.initializeRectangle();
         this.abstractAlgorithms = new HeapSort(this.canvas.getList(), this.rectangle);
+        this.abstractAlgorithms.setAnimationDelay(this.animationDelay);
         Thread thread = new Thread(abstractAlgorithms, ConstKeys.SORTING_THREAD);
         this.canvas.setListSorted(true);
         thread.start();
-    }
-
-    private void verySlowSpeedMenuItem() {
-    }
-
-    private void slowSpeedMenuItem() {
-        this.abstractAlgorithms.setAnimationDelay(50);
-    }
-
-    private void normalSpeedMenuItem() {
-        this.abstractAlgorithms.setAnimationDelay(20);
-    }
-
-    private void fastSpeedMenuItem() {
-        this.abstractAlgorithms.setAnimationDelay(7);
-    }
-
-    private void veryFastSpeedMenuItem() {
-        this.abstractAlgorithms.setAnimationDelay(3);
     }
 
     private void helpMenuItem() {

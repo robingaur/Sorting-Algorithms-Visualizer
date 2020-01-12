@@ -4,6 +4,7 @@ import UtilityClasses.ConstKeys;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Hashtable;
 
 class EventQueueThread implements Runnable {
 
@@ -101,50 +102,19 @@ class EventQueueThread implements Runnable {
 
         {
             // Speed Menu
-            JSlider speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 99, 90);
-            speedSlider.setMajorTickSpacing(20);
-            speedSlider.setMinorTickSpacing(5);
-            speedSlider.setPaintTicks(true);
+            JSlider speedSlider = new JSlider(JSlider.HORIZONTAL, 1, 99, 50);
+            Hashtable<Integer, JLabel> labelNames = new Hashtable<>();
+            labelNames.put(1, new JLabel("Slow"));
+            labelNames.put(50, new JLabel("Normal"));
+            labelNames.put(99, new JLabel("Fast"));
+            speedSlider.setLabelTable(labelNames);
             speedSlider.setPaintLabels(true);
+            speedSlider.setPaintTicks(true);
+            speedSlider.setMajorTickSpacing(10);
+            speedSlider.addChangeListener(this.menuItemListener);
             speedMenu.add(speedSlider);
+
             menuBar.add(speedMenu);
-        }
-        {
-            // Speed Menu
-//            ButtonGroup speedGroup = new ButtonGroup();
-//
-//            JMenuItem verySlowSpeed = new JRadioButtonMenuItem("Very Slow");
-//            verySlowSpeed.setActionCommand(ConstKeys.VERY_SLOW_SPEED_MENU_ITEM);
-//            verySlowSpeed.addActionListener(this.menuItemListener);
-//            speedMenu.add(verySlowSpeed);
-//            speedGroup.add(verySlowSpeed);
-//
-//            JMenuItem slowSpeed = new JRadioButtonMenuItem("Very Slow");
-//            slowSpeed.setActionCommand(ConstKeys.SLOW_SPEED_MENU_ITEM);
-//            slowSpeed.addActionListener(this.menuItemListener);
-//            speedMenu.add(slowSpeed);
-//            speedGroup.add(slowSpeed);
-//
-//            JMenuItem normalSpeed = new JRadioButtonMenuItem("Normal");
-//            normalSpeed.setActionCommand(ConstKeys.NORMAL_SPEED_MENU_ITEM);
-//            normalSpeed.addActionListener(this.menuItemListener);
-//            speedMenu.add(normalSpeed);
-//            speedGroup.add(normalSpeed);
-//
-//            JMenuItem fastSpeed = new JRadioButtonMenuItem("Fast");
-//            fastSpeed.setActionCommand(ConstKeys.FAST_SPEED_MENU_ITEM);
-//            fastSpeed.addActionListener(this.menuItemListener);
-//            speedMenu.add(fastSpeed);
-//            speedGroup.add(fastSpeed);
-//
-//            JMenuItem veryFastSpeed = new JRadioButtonMenuItem("Very Fast");
-//            veryFastSpeed.setActionCommand(ConstKeys.VERY_FAST_SPEED_MENU_ITEM);
-//            veryFastSpeed.addActionListener(this.menuItemListener);
-//            speedMenu.add(veryFastSpeed);
-//            speedGroup.add(veryFastSpeed);
-//
-//            menuBar.add(speedMenu);
-//            normalSpeed.setSelected(true);
         }
 
         {
