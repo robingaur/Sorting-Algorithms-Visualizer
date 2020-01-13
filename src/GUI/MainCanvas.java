@@ -18,7 +18,7 @@ public class MainCanvas extends JPanel implements MainCanvasInterface {
 
     public MainCanvas() {
         try {
-            EventQueue.invokeAndWait(new EventQueueThread(this, this.frame));
+            EventQueue.invokeAndWait(new EventQueueThread(this));
         } catch (InterruptedException | InvocationTargetException ex) {
             ex.printStackTrace();
         }

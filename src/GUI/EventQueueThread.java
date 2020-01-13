@@ -12,9 +12,9 @@ class EventQueueThread implements Runnable {
     private JFrame frame;
     private MenuItemListener menuItemListener;
 
-    public EventQueueThread(MainCanvas mainCanvas, JFrame frame) {
+    public EventQueueThread(MainCanvas mainCanvas) {
         this.mainCanvas = mainCanvas;
-        this.frame = frame;
+        this.frame = mainCanvas.getFrame();
         this.menuItemListener = new MenuItemListener(mainCanvas);
     }
 
