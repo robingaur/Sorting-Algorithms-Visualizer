@@ -9,6 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainCanvas extends JPanel implements MainCanvasInterface {
 
@@ -41,7 +42,7 @@ public class MainCanvas extends JPanel implements MainCanvasInterface {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        RectangleInterface rectangle = new Rectangle(this);
+        Rectangle rectangle = new Rectangle(g, super.getWidth(), super.getHeight(), this.DATA_SIZE);
 
         // White Background
         g.setColor(Color.WHITE);

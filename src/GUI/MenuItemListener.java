@@ -28,7 +28,8 @@ class MenuItemListener implements ActionListener, KeyListener, ChangeListener {
     }
 
     private void initializeRectangle() {
-        this.rectangle = new Rectangle(this.canvas);
+        this.rectangle = new Rectangle(this.canvas.getGraphics(), this.canvas.getWidth(),
+                this.canvas.getHeight(), this.canvas.getDataSize());
     }
 
     @Override
