@@ -1,17 +1,17 @@
 package algorithms;
 
-import UtilityClasses.Rectangle;
+import UtilityClasses.RectangleInterface;
 
 import java.util.List;
 
 public class SelectionSort extends AbstractAlgorithms {
 
-    public SelectionSort(List<Number> list, Rectangle rectangle) {
+    public SelectionSort(List<Number> list, RectangleInterface rectangle) {
         super(list, rectangle);
     }
 
     @Override
-    public void sort() {
+    protected void sort() {
         for (int i = 0; i < this.list.size(); i++) {
             int index = this.indexOfMinimum(i);
             super.swapWithAnimation(i, index);

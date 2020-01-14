@@ -1,6 +1,7 @@
 package GUI;
 
 import UtilityClasses.Rectangle;
+import UtilityClasses.RectangleInterface;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,8 +24,10 @@ public class MainCanvas extends JPanel implements MainCanvasInterface {
             ex.printStackTrace();
         }
 
+        // Set the Focus on frame, if not keyListener will not work.
         this.setFocusable(true);
 
+        // Default data size
         this.DATA_SIZE = 100;
         this.list = new ArrayList<>(this.DATA_SIZE);
         for (int i = 0; i < this.DATA_SIZE; i++) {
@@ -38,11 +41,12 @@ public class MainCanvas extends JPanel implements MainCanvasInterface {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Rectangle rectangle = new Rectangle(g, super.getWidth(), super.getHeight(), this.DATA_SIZE);
+        RectangleInterface rectangle = new Rectangle(this);
 
         // White Background
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, super.getWidth(), super.getHeight());
+
         // Black Border
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, super.getWidth(), super.getHeight());
@@ -63,8 +67,8 @@ public class MainCanvas extends JPanel implements MainCanvasInterface {
     }
 
     @Override
-    public void setListSorted(boolean listsorted) {
-        this.isListSorted = listsorted;
+    public void setListSorted(boolean isListSorted) {
+        this.isListSorted = isListSorted;
     }
 
     @Override

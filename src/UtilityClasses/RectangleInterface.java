@@ -4,7 +4,20 @@ import java.awt.*;
 
 public interface RectangleInterface {
 
-    public void drawAtIndex(int index, int height, Color color);
+    /**
+     * Draw a rectangle at given index and height of given color.
+     *
+     * @param index
+     * @param height
+     * @param color
+     */
+    void drawAtIndex(int index, int height, Color color);
 
-    public void removeAtIndex(int index, int height);
+    /**
+     * delete a rectangle at given index and height.
+     *
+     * @param index
+     * @param height
+     */
+    void removeAtIndex(int index, int height);
 }

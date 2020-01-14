@@ -1,17 +1,17 @@
 package algorithms;
 
-import UtilityClasses.Rectangle;
+import UtilityClasses.RectangleInterface;
 
 import java.util.List;
 
 public class MergeSort extends AbstractAlgorithms {
 
-    public MergeSort(List<Number> list, Rectangle rectangle) {
+    public MergeSort(List<Number> list, RectangleInterface rectangle) {
         super(list, rectangle);
     }
 
     @Override
-    void sort() {
+    protected void sort() {
         this.sort(0, this.list.size() - 1);
     }
 

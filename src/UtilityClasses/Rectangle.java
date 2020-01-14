@@ -1,5 +1,7 @@
 package UtilityClasses;
 
+import GUI.MainCanvasInterface;
+
 import java.awt.*;
 
 public class Rectangle implements RectangleInterface {
@@ -9,11 +11,11 @@ public class Rectangle implements RectangleInterface {
     int canvasHeight;
     int dataLength;
 
-    public Rectangle(Graphics g, int canvasWidth, int canvasHeight, int dataLength) {
-        this.g = g;
-        this.canvasWidth = canvasWidth;
-        this.canvasHeight = canvasHeight;
-        this.dataLength = dataLength;
+    public Rectangle(MainCanvasInterface canvas) {
+        this.g = canvas.getGraphics();
+        this.canvasWidth = canvas.getWidth();
+        this.canvasHeight = canvas.getHeight();
+        this.dataLength = canvas.getDataSize();
     }
 
     @Override

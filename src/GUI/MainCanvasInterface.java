@@ -1,17 +1,54 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 public interface MainCanvasInterface {
 
-    public JFrame getFrame();
+    /**
+     * @return Graphics Object
+     */
+    Graphics getGraphics();
 
-    public List<Number> getList();
+    /**
+     * @return the Width of panel
+     */
+    int getWidth();
 
-    public void setListSorted(boolean listsorted);
+    /**
+     * @return the Height of JPanel
+     */
+    int getHeight();
 
-    public boolean isListSorted();
+    /**
+     * This method will repaint the JFrame
+     */
+    void repaint();
 
-    public int getDataSize();
+    /**
+     * @return the JFrame object
+     */
+    JFrame getFrame();
+
+    /**
+     * @return the List<Number> Object of items
+     */
+    List<Number> getList();
+
+    /**
+     * @param isListSorted is true, then method will set tha flag of isListSorted to true.
+     * @param isListSorted is false, then method will set tha flag of isListSorted to false.
+     */
+    void setListSorted(boolean isListSorted);
+
+    /**
+     * @return is the list is sorted or not.
+     */
+    boolean isListSorted();
+
+    /**
+     * @return the data size
+     */
+    int getDataSize();
 }

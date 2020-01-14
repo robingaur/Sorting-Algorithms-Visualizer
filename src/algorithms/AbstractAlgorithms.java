@@ -1,20 +1,20 @@
 package algorithms;
 
-import UtilityClasses.Rectangle;
+import UtilityClasses.RectangleInterface;
 
 import java.awt.*;
 import java.util.List;
 
-public abstract class AbstractAlgorithms implements Runnable, AlgorithmsInterface {
+public abstract class AbstractAlgorithms implements AlgorithmsInterface {
 
     protected List<Number> list;
-    private Rectangle rectangle;
+    private RectangleInterface rectangle;
     private double animationDelay;
 
-    public AbstractAlgorithms(List<Number> list, Rectangle rectangle) {
+    public AbstractAlgorithms(List<Number> list, RectangleInterface rectangle) {
         this.list = list;
         this.rectangle = rectangle;
-        this.animationDelay = 10.0;
+        this.animationDelay = 10.0; // Default animation delay
     }
 
     @Override
@@ -22,7 +22,7 @@ public abstract class AbstractAlgorithms implements Runnable, AlgorithmsInterfac
         this.sort();
     }
 
-    abstract void sort();
+    protected abstract void sort();
 
     protected void swapWithAnimation(int i, int j) {
         Number temp;

@@ -1,17 +1,17 @@
 package algorithms;
 
-import UtilityClasses.Rectangle;
+import UtilityClasses.RectangleInterface;
 
 import java.util.List;
 
 public class InsertionSort extends AbstractAlgorithms {
 
-    public InsertionSort(List<Number> list, Rectangle rectangle) {
+    public InsertionSort(List<Number> list, RectangleInterface rectangle) {
         super(list, rectangle);
     }
 
     @Override
-    void sort() {
+    protected void sort() {
         int j;
         for (int i = 1; i < super.list.size(); i++) {
             j = i;

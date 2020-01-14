@@ -1,17 +1,17 @@
 package algorithms;
 
-import UtilityClasses.Rectangle;
+import UtilityClasses.RectangleInterface;
 
 import java.util.List;
 
 public class QuickSort extends AbstractAlgorithms {
 
-    public QuickSort(List<Number> list, Rectangle rectangle) {
+    public QuickSort(List<Number> list, RectangleInterface rectangle) {
         super(list, rectangle);
     }
 
     @Override
-    void sort() {
+    protected void sort() {
         this.sort(0, this.list.size() - 1);
     }
 
