@@ -42,7 +42,7 @@ public class MainCanvas extends JPanel implements MainCanvasInterface {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Rectangle rectangle = new Rectangle(g, super.getWidth(), super.getHeight(), this.DATA_SIZE);
+        RectangleInterface rectangle = new Rectangle(g, super.getWidth(), super.getHeight(), this.DATA_SIZE);
 
         // White Background
         g.setColor(Color.WHITE);
