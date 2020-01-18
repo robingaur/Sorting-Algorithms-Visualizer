@@ -27,58 +27,15 @@ public class MergeSortWithConstantSpace extends AbstractAlgorithms {
     }
 
     private void merge(int start, int mid, int end) {
-        try {
-            // Sizes of the Array
-            int sizeOfLeftArray = mid - start + 1;
-            int sizeOfRightArray = end - mid;
 
-            int[] left = new int[sizeOfLeftArray];
-            int[] right = new int[sizeOfRightArray];
-
-            for (int i = 0; i < sizeOfLeftArray; i++) {
-                left[i] = super.list.get(start + i).intValue();
-            }
-
-            for (int i = 0; i < sizeOfRightArray; i++) {
-                right[i] = super.list.get(mid + i + 1).intValue();
-            }
-
-            int i = 0, j = 0, k = start;
-            while (i < sizeOfLeftArray && j < sizeOfRightArray) {
-                super.drawAndDeleteRedRectangle(k, k);
-
-                if (left[i] <= right[j]) {
-                    super.list.set(k, left[i]);
-                    i++;
+        for (int i = mid; i >= start; i--) {
+            for (int j = i; j < end; j++) {
+                if (super.list.get(j).intValue() > super.list.get(j + 1).intValue()) {
+                    super.swapWithAnimation(j, j + 1);
                 } else {
-                    super.list.set(k, right[j]);
-                    j++;
+                    break;
                 }
-
-                super.drawGreenRectangle(k, k);
-                Thread.sleep(10);
-                k++;
             }
-
-            while (i < sizeOfLeftArray) {
-                super.drawAndDeleteRedRectangle(k, k);
-                this.list.set(k, left[i]);
-                i++;
-
-                super.drawGreenRectangle(k, k);
-                k++;
-            }
-
-            while (j < sizeOfRightArray) {
-                super.drawAndDeleteRedRectangle(k, k);
-                this.list.set(k, right[j]);
-                j++;
-
-                super.drawGreenRectangle(k, k);
-                k++;
-            }
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
         }
     }
 }

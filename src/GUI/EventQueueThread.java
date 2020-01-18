@@ -92,6 +92,11 @@ class EventQueueThread implements Runnable {
             mergeSort.addActionListener(this.menuItemListener);
             algorithmMenu.add(mergeSort);
 
+            JMenuItem mergeSortConstSpace = new JMenuItem("Merge Sort (O(1) Space)");
+            mergeSortConstSpace.setActionCommand(ConstKeys.MERGE_SORT_CONST_SPACE_MENU_ITEM);
+            mergeSortConstSpace.addActionListener(this.menuItemListener);
+            algorithmMenu.add(mergeSortConstSpace);
+
             JMenuItem heapSort = new JMenuItem("Heap Sort");
             heapSort.setActionCommand(ConstKeys.HEAP_SORT_MENU_ITEM);
             heapSort.addActionListener(this.menuItemListener);

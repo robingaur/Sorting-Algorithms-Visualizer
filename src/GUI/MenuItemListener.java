@@ -66,6 +66,10 @@ class MenuItemListener implements ActionListener, KeyListener, ChangeListener {
                     this.sortingCheck();
                     this.mergeSortMenuItem();
                     break;
+                case ConstKeys.MERGE_SORT_CONST_SPACE_MENU_ITEM:
+                    this.sortingCheck();
+                    this.mergeSortConstSpaceMenuItem();
+                    break;
                 case ConstKeys.HEAP_SORT_MENU_ITEM:
                     this.sortingCheck();
                     this.heapSortMenuItem();
@@ -218,6 +222,15 @@ class MenuItemListener implements ActionListener, KeyListener, ChangeListener {
     private void mergeSortMenuItem() {
         this.initializeRectangle();
         this.algorithms = new MergeSort(this.canvas.getList(), this.rectangle);
+        this.algorithms.setAnimationDelay(this.animationDelay);
+        Thread thread = new Thread(algorithms, ConstKeys.SORTING_THREAD);
+        this.canvas.setListSorted(true);
+        thread.start();
+    }
+
+    private void mergeSortConstSpaceMenuItem() {
+        this.initializeRectangle();
+        this.algorithms = new MergeSortWithConstantSpace(this.canvas.getList(), this.rectangle);
         this.algorithms.setAnimationDelay(this.animationDelay);
         Thread thread = new Thread(algorithms, ConstKeys.SORTING_THREAD);
         this.canvas.setListSorted(true);

@@ -14,6 +14,7 @@ public class ConstKeys {
     public static final String SELECTION_SORT_MENU_ITEM = "SELECTION_SORT_MENU_ITEM";
     public static final String QUICK_SORT_MENU_ITEM = "QUICK_SORT_MENU_ITEM";
     public static final String MERGE_SORT_MENU_ITEM = "MERGE_SORT_MENU_ITEM";
+    public static final String MERGE_SORT_CONST_SPACE_MENU_ITEM = "MERGE_SORT_CONST_SPACE_MENU_ITEM";
     public static final String HEAP_SORT_MENU_ITEM = "HEAP_SORT_MENU_ITEM";
 
     public static final String HELP_MENU_ITEM = "HELP_MENU_ITEM";
