@@ -15,8 +15,10 @@ public class HeapSort extends AbstractAlgorithms {
 
         int n = this.list.size();
 
-        for (int i = n / 2 - 1; i >= 0; i--)
+        // Heapify array for each parent
+        for (int i = n / 2 - 1; i >= 0; i--) {
             this.heapify(n, i);
+        }
 
         for (int i = n - 1; i >= 0; i--) {
             super.swapWithAnimation(0, i);
@@ -24,6 +26,10 @@ public class HeapSort extends AbstractAlgorithms {
         }
     }
 
+    /**
+     * @param n is index of last element or current array size - 1.
+     * @param i
+     */
     private void heapify(int n, int i) {
 
         int largest = i;
@@ -33,9 +39,7 @@ public class HeapSort extends AbstractAlgorithms {
 
         if (left < n && super.list.get(left).intValue() > super.list.get(largest).intValue()) {
             largest = left;
-        }
-
-        if (right < n && super.list.get(right).intValue() > super.list.get(largest).intValue()) {
+        } else if (right < n && super.list.get(right).intValue() > super.list.get(largest).intValue()) {
             largest = right;
         }
 

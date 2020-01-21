@@ -1,13 +1,13 @@
 # Sorting Algorithms Visualizer
 In this project, you can visualize the sorting algorithms.
 Currently, the following algorithms are supported:
-* Bubble Sort
-* Insertion Sort
-* Selection Sort
-* Quick Sort
-* Merge Sort
+* [Bubble Sort](https://www.geeksforgeeks.org/bubble-sort)
+* [Insertion Sort](https://www.geeksforgeeks.org/insertion-sort)
+* [Selection Sort](https://www.geeksforgeeks.org/selection-sort)
+* [Quick Sort](https://www.geeksforgeeks.org/quick-sort)
+* [Merge Sort](https://www.geeksforgeeks.org/merge-sort)
 * Merge Sort - O(1) Space
-* Heap Sort
+* [Heap Sort](https://www.geeksforgeeks.org/heap-sort)
 
 ## Getting Started
 You can easily import this project in any editor (IntelliJ prefer) or you can complie the code and run the [Main.java](https://github.com/robingaur/Sorting-Algorithms-Visualizer/blob/master/src/Main.java) file present in [src](https://github.com/robingaur/Sorting-Algorithms-Visualizer/blob/master/src) folder.
