@@ -32,9 +32,9 @@ public interface MainCanvasInterface {
     JFrame getFrame();
 
     /**
-     * @return the List<Number> Object of items
+     * @return the List<Integer> Object of items
      */
-    List<Number> getList();
+    List<Integer> getList();
 
     /**
      * @param isListSorted is true, then method will set tha flag of isListSorted to true.

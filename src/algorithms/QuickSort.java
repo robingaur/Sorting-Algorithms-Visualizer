@@ -6,7 +6,7 @@ import java.util.List;
 
 public class QuickSort extends AbstractAlgorithms {
 
-    public QuickSort(List<Number> list, RectangleInterface rectangle) {
+    public QuickSort(List<Integer> list, RectangleInterface rectangle) {
         super(list, rectangle);
     }
 
@@ -24,11 +24,11 @@ public class QuickSort extends AbstractAlgorithms {
     }
 
     private int partition(int low, int high) {
-        int pivot = super.list.get(high).intValue();
+        int pivot = super.list.get(high);
         int i = low - 1;
 
         for (int j = low; j < high; j++) {
-            if (super.list.get(j).intValue() < pivot) {
+            if (super.list.get(j) < pivot) {
                 i++;
                 super.swapWithAnimation(i, j);
             }

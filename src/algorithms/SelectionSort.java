@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SelectionSort extends AbstractAlgorithms {
 
-    public SelectionSort(List<Number> list, RectangleInterface rectangle) {
+    public SelectionSort(List<Integer> list, RectangleInterface rectangle) {
         super(list, rectangle);
     }
 
@@ -19,13 +19,13 @@ public class SelectionSort extends AbstractAlgorithms {
     }
 
     private int indexOfMinimum(int startIndex) {
-        int min = this.list.get(startIndex).intValue();
+        int min = this.list.get(startIndex);
         int minIndex = startIndex;
 
         for (int i = startIndex + 1; i < this.list.size(); i++) {
-            if (this.list.get(i).intValue() < min) {
+            if (this.list.get(i) < min) {
                 minIndex = i;
-                min = this.list.get(i).intValue();
+                min = this.list.get(i);
             }
         }
         return minIndex;

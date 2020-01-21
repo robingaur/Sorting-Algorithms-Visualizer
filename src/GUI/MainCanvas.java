@@ -9,13 +9,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class MainCanvas extends JPanel implements MainCanvasInterface {
 
     private JFrame frame;
     private final int DATA_SIZE;
-    private List<Number> list;
+    private List<Integer> list;
     private boolean isListSorted;
 
     public MainCanvas() {
@@ -53,7 +52,7 @@ public class MainCanvas extends JPanel implements MainCanvasInterface {
         g.drawRect(0, 0, super.getWidth(), super.getHeight());
 
         for (int i = 0; i < this.list.size(); i++) {
-            rectangle.drawAtIndex(i, this.list.get(i).intValue(), Color.GREEN);
+            rectangle.drawAtIndex(i, this.list.get(i), Color.GREEN);
         }
     }
 
@@ -63,7 +62,7 @@ public class MainCanvas extends JPanel implements MainCanvasInterface {
     }
 
     @Override
-    public List<Number> getList() {
+    public List<Integer> getList() {
         return this.list;
     }
 

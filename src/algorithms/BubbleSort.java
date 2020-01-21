@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BubbleSort extends AbstractAlgorithms {
 
-    public BubbleSort(List<Number> list, RectangleInterface rectangle) {
+    public BubbleSort(List<Integer> list, RectangleInterface rectangle) {
         super(list, rectangle);
     }
 
@@ -17,9 +17,9 @@ public class BubbleSort extends AbstractAlgorithms {
         while (isSwaped) {
             isSwaped = false;
             for (int i = 1; i < super.list.size(); i++) {
-                if (super.list.get(i - 1).intValue() > super.list.get(i).intValue()) {
+                if (super.list.get(i - 1) > super.list.get(i)) {
                     isSwaped = true;
-                    super.swapWithAnimation(i-1, i);
+                    super.swapWithAnimation(i - 1, i);
                 }
             }
         }

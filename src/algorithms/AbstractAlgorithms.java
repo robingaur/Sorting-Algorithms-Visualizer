@@ -7,11 +7,11 @@ import java.util.List;
 
 public abstract class AbstractAlgorithms implements AlgorithmsInterface {
 
-    protected List<Number> list;
+    protected List<Integer> list;
     private RectangleInterface rectangle;
     private double animationDelay;
 
-    public AbstractAlgorithms(List<Number> list, RectangleInterface rectangle) {
+    public AbstractAlgorithms(List<Integer> list, RectangleInterface rectangle) {
         this.list = list;
         this.rectangle = rectangle;
         this.animationDelay = 10.0; // Default animation delay
@@ -25,7 +25,7 @@ public abstract class AbstractAlgorithms implements AlgorithmsInterface {
     protected abstract void sort();
 
     protected void swapWithAnimation(int i, int j) {
-        Number temp;
+        Integer temp;
         this.drawAndDeleteRedRectangle(i, j);
 
         // Swap the items in the list
@@ -40,8 +40,8 @@ public abstract class AbstractAlgorithms implements AlgorithmsInterface {
     protected void drawAndDeleteRedRectangle(int i, int j) {
 
         // Red Rectangle
-        this.rectangle.drawAtIndex(i, this.list.get(i).intValue(), Color.RED);
-        this.rectangle.drawAtIndex(j, this.list.get(j).intValue(), Color.RED);
+        this.rectangle.drawAtIndex(i, this.list.get(i), Color.RED);
+        this.rectangle.drawAtIndex(j, this.list.get(j), Color.RED);
 
         try {
             Thread.sleep((int) (5 * this.getAnimationDelay()));
@@ -49,14 +49,14 @@ public abstract class AbstractAlgorithms implements AlgorithmsInterface {
         }
 
         // Delete Red Rectangle (Delete Rectangle at all)
-        this.rectangle.removeAtIndex(i, this.list.get(i).intValue());
-        this.rectangle.removeAtIndex(j, this.list.get(j).intValue());
+        this.rectangle.removeAtIndex(i, this.list.get(i));
+        this.rectangle.removeAtIndex(j, this.list.get(j));
 
     }
 
     protected void drawGreenRectangle(int i, int j) {
-        this.rectangle.drawAtIndex(i, this.list.get(i).intValue(), Color.GREEN);
-        this.rectangle.drawAtIndex(j, this.list.get(j).intValue(), Color.GREEN);
+        this.rectangle.drawAtIndex(i, this.list.get(i), Color.GREEN);
+        this.rectangle.drawAtIndex(j, this.list.get(j), Color.GREEN);
 
         try {
             Thread.sleep((int) this.getAnimationDelay());

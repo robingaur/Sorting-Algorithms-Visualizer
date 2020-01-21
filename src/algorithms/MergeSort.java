@@ -6,7 +6,7 @@ import java.util.List;
 
 public class MergeSort extends AbstractAlgorithms {
 
-    public MergeSort(List<Number> list, RectangleInterface rectangle) {
+    public MergeSort(List<Integer> list, RectangleInterface rectangle) {
         super(list, rectangle);
     }
 
@@ -35,11 +35,11 @@ public class MergeSort extends AbstractAlgorithms {
         int[] right = new int[sizeOfRightArray];
 
         for (int i = 0; i < sizeOfLeftArray; i++) {
-            left[i] = super.list.get(start + i).intValue();
+            left[i] = super.list.get(start + i);
         }
 
         for (int i = 0; i < sizeOfRightArray; i++) {
-            right[i] = super.list.get(mid + i + 1).intValue();
+            right[i] = super.list.get(mid + i + 1);
         }
 
         int i = 0, j = 0, k = start;

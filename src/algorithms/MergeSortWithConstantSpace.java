@@ -6,7 +6,7 @@ import java.util.List;
 
 public class MergeSortWithConstantSpace extends AbstractAlgorithms {
 
-    public MergeSortWithConstantSpace(List<Number> list, RectangleInterface rectangle) {
+    public MergeSortWithConstantSpace(List<Integer> list, RectangleInterface rectangle) {
         super(list, rectangle);
     }
 
@@ -30,7 +30,7 @@ public class MergeSortWithConstantSpace extends AbstractAlgorithms {
 
         for (int i = mid; i >= start; i--) {
             for (int j = i; j < end; j++) {
-                if (super.list.get(j).intValue() > super.list.get(j + 1).intValue()) {
+                if (super.list.get(j) > super.list.get(j + 1)) {
                     super.swapWithAnimation(j, j + 1);
                 } else {
                     break;

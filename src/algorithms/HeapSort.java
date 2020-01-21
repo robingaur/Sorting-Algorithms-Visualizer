@@ -6,7 +6,7 @@ import java.util.List;
 
 public class HeapSort extends AbstractAlgorithms {
 
-    public HeapSort(List<Number> list, RectangleInterface rectangle) {
+    public HeapSort(List<Integer> list, RectangleInterface rectangle) {
         super(list, rectangle);
     }
 
@@ -37,9 +37,9 @@ public class HeapSort extends AbstractAlgorithms {
         int right = 2 * i + 2;
 
 
-        if (left < n && super.list.get(left).intValue() > super.list.get(largest).intValue()) {
+        if (left < n && super.list.get(left) > super.list.get(largest)) {
             largest = left;
-        } else if (right < n && super.list.get(right).intValue() > super.list.get(largest).intValue()) {
+        } else if (right < n && super.list.get(right) > super.list.get(largest)) {
             largest = right;
         }
 
