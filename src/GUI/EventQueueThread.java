@@ -102,6 +102,11 @@ class EventQueueThread implements Runnable {
             heapSort.addActionListener(this.menuItemListener);
             algorithmMenu.add(heapSort);
 
+            JMenuItem radixSort = new JMenuItem("Radix Sort");
+            radixSort.setActionCommand(ConstKeys.RADIX_SORT_MENU_ITEM);
+            radixSort.addActionListener(this.menuItemListener);
+            algorithmMenu.add(radixSort);
+
             menuBar.add(algorithmMenu);
         }
 

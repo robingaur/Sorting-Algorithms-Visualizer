@@ -8,6 +8,7 @@ Currently, the following algorithms are supported:
 * [Merge Sort](https://www.geeksforgeeks.org/merge-sort)
 * Merge Sort - O(1) Space
 * [Heap Sort](https://www.geeksforgeeks.org/heap-sort)
+* [Radix Sort](https://www.geeksforgeeks.org/radix-sort)
 
 ## Getting Started
 You can easily import this project in any editor (IntelliJ prefer) or you can complie the code and run the [Main.java](https://github.com/robingaur/Sorting-Algorithms-Visualizer/blob/master/src/Main.java) file present in [src](https://github.com/robingaur/Sorting-Algorithms-Visualizer/blob/master/src) folder.

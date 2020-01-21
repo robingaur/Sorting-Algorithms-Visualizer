@@ -39,7 +39,9 @@ public class HeapSort extends AbstractAlgorithms {
 
         if (left < n && super.list.get(left) > super.list.get(largest)) {
             largest = left;
-        } else if (right < n && super.list.get(right) > super.list.get(largest)) {
+        }
+
+        if (right < n && super.list.get(right) > super.list.get(largest)) {
             largest = right;
         }
 

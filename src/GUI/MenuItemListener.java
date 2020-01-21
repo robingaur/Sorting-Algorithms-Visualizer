@@ -74,6 +74,10 @@ class MenuItemListener implements ActionListener, KeyListener, ChangeListener {
                     this.sortingCheck();
                     this.heapSortMenuItem();
                     break;
+                case ConstKeys.RADIX_SORT_MENU_ITEM:
+                    this.sortingCheck();
+                    this.radixSortMenuItem();
+                    break;
                 case ConstKeys.HELP_MENU_ITEM:
                     this.helpMenuItem();
                     break;
@@ -240,6 +244,15 @@ class MenuItemListener implements ActionListener, KeyListener, ChangeListener {
     private void heapSortMenuItem() {
         this.initializeRectangle();
         this.algorithms = new HeapSort(this.canvas.getList(), this.rectangle);
+        this.algorithms.setAnimationDelay(this.animationDelay);
+        Thread thread = new Thread(algorithms, ConstKeys.SORTING_THREAD);
+        this.canvas.setListSorted(true);
+        thread.start();
+    }
+
+    private void radixSortMenuItem() {
+        this.initializeRectangle();
+        this.algorithms = new RadixSort(this.canvas.getList(), this.rectangle);
         this.algorithms.setAnimationDelay(this.animationDelay);
         Thread thread = new Thread(algorithms, ConstKeys.SORTING_THREAD);
         this.canvas.setListSorted(true);
